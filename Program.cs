@@ -49,25 +49,19 @@ else if (resp == "2")
     while (!sr.EndOfStream)
     {
         string? line = sr.ReadLine();
+
+        string[] date = String.IsNullOrEmpty(line) ? [] : line.Split(',', '|', '/');
+
+        DateTime weekOf = new DateTime(Convert.ToInt32(date[2]), Convert.ToInt32(date[0]), Convert.ToInt32(date[1]));
+
+
+
+        Console.WriteLine("Week of {0}.\n Su Mo Tu We Th Fr Sa Tot Avg \n -- -- -- -- -- -- -- --- --- \n {1,2} {2,2} {3,2} {4,2} {5,2} {6,2} {7,2} {8,3} {9,3}", weekOf.ToString("MMMM dd, yyyy"),date[3],date[4],date[5],date[6],date[7],date[8],date[9], Convert.ToInt32(date[3])+Convert.ToInt32(date[4])+Convert.ToInt32(date[5])+Convert.ToInt32(date[6])+Convert.ToInt32(date[7])+Convert.ToInt32(date[8])+Convert.ToInt32(date[9]),((Convert.ToInt32(date[3])+Convert.ToInt32(date[4])+Convert.ToInt32(date[5])+Convert.ToInt32(date[6])+Convert.ToInt32(date[7])+Convert.ToInt32(date[8])+Convert.ToInt32(date[9]))/7.0).ToString("f1"));
+
+
+
+
         
-        string[] date = String.IsNullOrEmpty(line) ? [] : line.Split(',' , '|');
-        
-
-        int i = 0;
-        foreach (string x in date)
-        {
-            Console.WriteLine(date[i]);
-            i++;
-            
-            
-        }
-
-
-
-
-
-
-
     }
     
 
